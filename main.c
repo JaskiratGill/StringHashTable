@@ -84,10 +84,6 @@ void wc_output(struct wc *wc){
 
 struct wc *wc_init(char *word_array,long size){
 
-
-
-    //printf("raw array length %lu\n", size);
-
     //clean up the array
 
     char*word_array_new = malloc(sizeof(char) * (size+1));
@@ -118,7 +114,7 @@ struct wc *wc_init(char *word_array,long size){
         //printf("NULLED %lu\n", t);
     }
 
-    //parse this array into separate words and print them
+    //parse this array into separate words
     unsigned long int i = 0;
     char*word = malloc(sizeof(char));
     unsigned long int j = 0;
@@ -147,9 +143,6 @@ struct wc *wc_init(char *word_array,long size){
                     while (current-> next != NULL){
                         if (strcmp(current-> key, word) ==0){
                             current-> value = (current -> value + 1);
-                            //printf("1. Incremented count to %lu for", current -> value);
-                            //printString(word);
-                            //printf("\n");
                             wordFound =1;
                             break;
                         }
@@ -158,17 +151,11 @@ struct wc *wc_init(char *word_array,long size){
 
                     if (strcmp(current-> key, word) ==0 && wordFound==0){
                             current-> value = (current -> value + 1);
-                            //printf("2. Incremented count to %lu for ", current -> value);
-                            //printString(word);
-                            //printf("\n");
                             wordFound =1;
                         }
 
                     if(wordFound == 0){
                         current -> next = createPair(word);
-                        //printf("Creating new node for ");
-                        //printString(word);
-                       // printf("\n");
                     }
 
                 }
